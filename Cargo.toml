@@ -1,0 +1,44 @@
+[package]
+name = "pong"
+version = "0.1.0"
+authors = ["Azriel Hoh <azriel91@gmail.com>"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib"]
+path = "src/main.rs"
+
+[[bin]]
+name = "pong"
+path = "src/main.rs"
+
+[dependencies]
+amethyst = { path = "../amethyst", features = ["audio"] }
+
+# Convenience snippets to override dependencies.
+
+# [patch."https://github.com/amethyst/amethyst.git"]
+# amethyst = { git = "https://github.com/YOUR_USERNAME/amethyst.git", branch = "YOUR_BRANCH" }
+
+# [patch."https://github.com/amethyst/rendy.git"]
+# rendy = { git = "https://github.com/YOUR_USERNAME/rendy.git", branch = "YOUR_BRANCH" }
+
+# [patch."https://github.com/amethyst/winit.git"]
+# winit = { git = "https://github.com/YOUR_USERNAME/winit.git", branch = "YOUR_BRANCH" }
+
+# [patch."https://github.com/amethyst/gfx.git"]
+# gfx = { git = "https://github.com/YOUR_USERNAME/gfx.git", branch = "YOUR_BRANCH" }
+
+# [patch."https://github.com/amethyst/glutin.git"]
+# glutin = { git = "https://github.com/YOUR_USERNAME/glutin.git", branch = "YOUR_BRANCH" }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies.wasm-bindgen]
+version = "0.2.59"
+
+[features]
+wasm = ["amethyst/wasm"]
+
+gl = ["amethyst/gl"]
+vulkan = ["amethyst/vulkan"]
+metal = ["amethyst/metal"]
+empty = ["amethyst/empty"]
