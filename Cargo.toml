@@ -1,5 +1,5 @@
 [package]
-name = "pong"
+name = "pong_wasm"
 version = "0.1.0"
 authors = ["Azriel Hoh <azriel91@gmail.com>"]
 edition = "2018"
@@ -14,6 +14,8 @@ path = "src/main.rs"
 
 [dependencies]
 amethyst = { path = "../amethyst", features = ["audio"] }
+wasm-logger = { version = "0.2.0", optional = true }
+log = "0.4.8"
 
 # Convenience snippets to override dependencies.
 
@@ -36,7 +38,7 @@ amethyst = { path = "../amethyst", features = ["audio"] }
 version = "0.2.59"
 
 [features]
-wasm = ["amethyst/wasm"]
+wasm = ["amethyst/wasm", "wasm-logger"]
 
 gl = ["amethyst/gl"]
 vulkan = ["amethyst/vulkan"]

@@ -2312,11 +2312,13 @@ dependencies = [
 ]
 
 [[package]]
-name = "pong"
+name = "pong_wasm"
 version = "0.1.0"
 dependencies = [
  "amethyst",
+ "log",
  "wasm-bindgen",
+ "wasm-logger",
 ]
 
 [[package]]
@@ -3655,6 +3657,17 @@ name = "wasm-bindgen-shared"
 version = "0.2.59"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fc9f36ad51f25b0219a3d4d13b90eb44cd075dff8b6280cca015775d7acaddd8"
+
+[[package]]
+name = "wasm-logger"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "074649a66bb306c8f2068c9016395fa65d8e08d2affcbf95acf3c24c3ab19718"
+dependencies = [
+ "log",
+ "wasm-bindgen",
+ "web-sys",
+]
 
 [[package]]
 name = "wavefront_obj"

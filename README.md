@@ -12,16 +12,11 @@ cargo run --features metal
 
 ### WASM
 
-### One Time Setup
-
-```bash
-npm init wasm-app www
-```
-
-
-
 ### Ongoing Development
 
 ```bash
 wasm-pack build -- --features "wasm gl"
+(cd www && npm install && npm run start)
 ```
+
+Open http://localhost:8080. Currently nothing appears, we need to make it appear.

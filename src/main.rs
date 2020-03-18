@@ -43,6 +43,7 @@ const AUDIO_BOUNCE: &str = "audio/bounce.ogg";
 const AUDIO_SCORE: &str = "audio/score.ogg";
 
 fn main() -> amethyst::Result<()> {
+    #[cfg(not(feature = "wasm"))]
     amethyst::start_logger(Default::default());
 
     use crate::pong::Pong;
@@ -58,10 +59,14 @@ fn main() -> amethyst::Result<()> {
             app_root.join("config/input.ron")
         }
     };
+    log::debug!("{:?}", key_bindings_path);
 
     let assets_dir = app_root.join("assets");
 
+    log::debug!("`EventLoop::new()`");
     let event_loop = EventLoop::new();
+
+    log::debug!("`DisplayConfig::load()`");
     let display_config = DisplayConfig::load(display_config_path)?;
     let game_data = GameDataBuilder::default()
         // Add the transform bundle which handles tracking entity positions
@@ -95,6 +100,7 @@ fn main() -> amethyst::Result<()> {
         )
         .build(game_data)?;
 
+    log::debug!("Before `run_winit_loop`.");
     game.run_winit_loop(event_loop);
 }
 
@@ -156,6 +162,10 @@ mod wasm {
 
     #[wasm_bindgen(start)]
     pub fn run() {
-        super::main();
+        wasm_logger::init(wasm_logger::Config::default());
+
+        log::debug!("run()");
+
+        let _ = super::main();
     }
 }
