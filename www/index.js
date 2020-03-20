@@ -1,3 +1,3 @@
-import * as pong from "./node_modules/pong/pong";
+import * as pong from "pong";
 
 pong.run();
