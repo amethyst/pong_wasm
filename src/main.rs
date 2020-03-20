@@ -48,7 +48,9 @@ fn main() -> amethyst::Result<()> {
 
     use crate::pong::Pong;
 
+    log::debug!("before `application_root_dir()`");
     let app_root = application_root_dir()?;
+    log::debug!("{:?}", app_root);
 
     let display_config_path = app_root.join("config/display.ron");
 
@@ -160,7 +162,7 @@ impl ScoreBoard {
 mod wasm {
     use wasm_bindgen::prelude::*;
 
-    #[wasm_bindgen(start)]
+    #[wasm_bindgen]
     pub fn run() {
         wasm_logger::init(wasm_logger::Config::default());
 

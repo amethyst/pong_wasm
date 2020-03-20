@@ -90,7 +90,7 @@ dependencies = [
  "rustc_version_runtime",
  "serde",
  "vergen",
- "winit",
+ "winit 0.22.0 (git+https://github.com/amethyst/winit.git?branch=wasm)",
 ]
 
 [[package]]
@@ -171,7 +171,7 @@ dependencies = [
  "derive-new",
  "log",
  "serde",
- "winit",
+ "winit 0.22.0 (git+https://github.com/amethyst/winit.git?branch=wasm)",
 ]
 
 [[package]]
@@ -227,7 +227,7 @@ dependencies = [
  "fnv",
  "serde",
  "smallvec 1.2.0",
- "winit",
+ "winit 0.22.0 (git+https://github.com/amethyst/winit.git?branch=wasm)",
 ]
 
 [[package]]
@@ -308,7 +308,7 @@ dependencies = [
  "smallvec 1.2.0",
  "unicode-normalization",
  "unicode-segmentation",
- "winit",
+ "winit 0.22.0 (git+https://github.com/amethyst/winit.git?branch=wasm)",
 ]
 
 [[package]]
@@ -339,7 +339,7 @@ dependencies = [
  "log",
  "serde",
  "web-sys",
- "winit",
+ "winit 0.22.0 (git+https://github.com/amethyst/winit.git?branch=wasm)",
 ]
 
 [[package]]
@@ -1402,7 +1402,7 @@ dependencies = [
  "parking_lot 0.10.0",
  "wayland-client",
  "winapi 0.3.8",
- "winit",
+ "winit 0.22.0 (git+https://github.com/amethyst/winit.git?branch=clone-events)",
 ]
 
 [[package]]
@@ -2712,7 +2712,7 @@ dependencies = [
 [[package]]
 name = "rendy"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=jaynus-fixes#d260347c2ab63512b170af0ecf219c76fa96af02"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
 dependencies = [
  "rendy-command",
  "rendy-core",
@@ -2733,7 +2733,7 @@ dependencies = [
 [[package]]
 name = "rendy-chain"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=jaynus-fixes#d260347c2ab63512b170af0ecf219c76fa96af02"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
 dependencies = [
  "log",
  "rendy-core",
@@ -2743,7 +2743,7 @@ dependencies = [
 [[package]]
 name = "rendy-command"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=jaynus-fixes#d260347c2ab63512b170af0ecf219c76fa96af02"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
 dependencies = [
  "relevant",
  "rendy-core",
@@ -2754,7 +2754,7 @@ dependencies = [
 [[package]]
 name = "rendy-core"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=jaynus-fixes#d260347c2ab63512b170af0ecf219c76fa96af02"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
 dependencies = [
  "gfx-backend-empty",
  "gfx-backend-gl",
@@ -2772,7 +2772,7 @@ dependencies = [
 [[package]]
 name = "rendy-descriptor"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=jaynus-fixes#d260347c2ab63512b170af0ecf219c76fa96af02"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
 dependencies = [
  "fxhash",
  "gfx-hal",
@@ -2784,7 +2784,7 @@ dependencies = [
 [[package]]
 name = "rendy-factory"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=jaynus-fixes#d260347c2ab63512b170af0ecf219c76fa96af02"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
 dependencies = [
  "either",
  "log",
@@ -2804,7 +2804,7 @@ dependencies = [
 [[package]]
 name = "rendy-frame"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=jaynus-fixes#d260347c2ab63512b170af0ecf219c76fa96af02"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
 dependencies = [
  "either",
  "log",
@@ -2821,7 +2821,7 @@ dependencies = [
 [[package]]
 name = "rendy-graph"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=jaynus-fixes#d260347c2ab63512b170af0ecf219c76fa96af02"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
 dependencies = [
  "bitflags",
  "either",
@@ -2844,7 +2844,7 @@ dependencies = [
 [[package]]
 name = "rendy-init"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=jaynus-fixes#d260347c2ab63512b170af0ecf219c76fa96af02"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
 dependencies = [
  "log",
  "rendy-command",
@@ -2853,13 +2853,13 @@ dependencies = [
  "rendy-wsi",
  "smallvec 1.2.0",
  "web-sys",
- "winit",
+ "winit 0.22.0 (git+https://github.com/amethyst/winit.git?branch=wasm)",
 ]
 
 [[package]]
 name = "rendy-memory"
 version = "0.5.3"
-source = "git+https://github.com/amethyst/rendy.git?branch=jaynus-fixes#d260347c2ab63512b170af0ecf219c76fa96af02"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
 dependencies = [
  "colorful",
  "gfx-hal",
@@ -2874,7 +2874,7 @@ dependencies = [
 [[package]]
 name = "rendy-mesh"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=jaynus-fixes#d260347c2ab63512b170af0ecf219c76fa96af02"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
 dependencies = [
  "log",
  "rendy-command",
@@ -2891,7 +2891,7 @@ dependencies = [
 [[package]]
 name = "rendy-resource"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=jaynus-fixes#d260347c2ab63512b170af0ecf219c76fa96af02"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
 dependencies = [
  "crossbeam-channel 0.3.9",
  "log",
@@ -2905,7 +2905,7 @@ dependencies = [
 [[package]]
 name = "rendy-shader"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=jaynus-fixes#d260347c2ab63512b170af0ecf219c76fa96af02"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
 dependencies = [
  "log",
  "rendy-core",
@@ -2917,7 +2917,7 @@ dependencies = [
 [[package]]
 name = "rendy-texture"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=jaynus-fixes#d260347c2ab63512b170af0ecf219c76fa96af02"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
 dependencies = [
  "image",
  "log",
@@ -2933,7 +2933,7 @@ dependencies = [
 [[package]]
 name = "rendy-wsi"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=jaynus-fixes#d260347c2ab63512b170af0ecf219c76fa96af02"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
 dependencies = [
  "log",
  "relevant",
@@ -3795,6 +3795,34 @@ checksum = "712e227841d057c1ee1cd2fb22fa7e5a5461ae8e48fa2ca79ec42cfc1931183f"
 name = "winit"
 version = "0.22.0"
 source = "git+https://github.com/amethyst/winit.git?branch=clone-events#04225a3937c1a5a052abb8724b0a38c5205f0312"
+dependencies = [
+ "android_glue",
+ "bitflags",
+ "cocoa",
+ "core-foundation",
+ "core-graphics",
+ "core-video-sys",
+ "dispatch",
+ "instant",
+ "lazy_static",
+ "libc",
+ "log",
+ "mio",
+ "mio-extras",
+ "objc",
+ "parking_lot 0.10.0",
+ "percent-encoding",
+ "raw-window-handle",
+ "smithay-client-toolkit",
+ "wayland-client",
+ "winapi 0.3.8",
+ "x11-dl",
+]
+
+[[package]]
+name = "winit"
+version = "0.22.0"
+source = "git+https://github.com/amethyst/winit.git?branch=wasm#04225a3937c1a5a052abb8724b0a38c5205f0312"
 dependencies = [
  "android_glue",
  "bitflags",
