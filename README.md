@@ -14,9 +14,16 @@ cargo run --features metal
 
 ### Ongoing Development
 
+Requires nightly rust.
+
 ```bash
-wasm-pack build -- --features "wasm gl"
-(cd www && npm install && npm run start)
+./build.sh
 ```
 
-Open http://localhost:8080. Currently nothing appears, we need to make it appear.
+Then run your favorite HTTP server:
+* Node: `npm install -g http-server` then `http-server`
+* Python: `python3 -m http.server`
+
+Open http://localhost:8080. Currently broken game appears. We need to fix it.
+
+Only Chrome renders something (stable and nightly). Firefox nightly loads but complains.

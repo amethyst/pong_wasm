@@ -16,6 +16,8 @@ path = "src/main.rs"
 amethyst = { path = "../amethyst", features = ["audio"] }
 wasm-logger = { version = "0.2.0", optional = true }
 log = "0.4.8"
+wasm-bindgen = { version = "0.2.59", optional = true }
+console_error_panic_hook = { version = "0.1.6", optional = true }
 
 # Convenience snippets to override dependencies.
 
@@ -38,9 +40,12 @@ log = "0.4.8"
 version = "0.2.59"
 
 [features]
-wasm = ["amethyst/wasm", "wasm-logger"]
+wasm = ["amethyst/wasm", "wasm-logger", "wasm-bindgen", "console_error_panic_hook"]
 
 gl = ["amethyst/gl"]
 vulkan = ["amethyst/vulkan"]
 metal = ["amethyst/metal"]
 empty = ["amethyst/empty"]
+
+[patch.crates-io]
+shred = { git = "https://github.com/amethyst/shred.git", branch = "wasm" }

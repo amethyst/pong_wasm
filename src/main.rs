@@ -15,7 +15,7 @@ use amethyst::{
         plugins::{RenderFlat2D, RenderToWindow},
         rendy::hal::command::ClearColor,
         types::DefaultBackend,
-        RenderingBundle,
+        RenderingBundle
     },
     ui::{RenderUi, UiBundle},
     utils::application_root_dir,
@@ -42,6 +42,13 @@ const AUDIO_MUSIC: &[&str] = &[
 const AUDIO_BOUNCE: &str = "audio/bounce.ogg";
 const AUDIO_SCORE: &str = "audio/score.ogg";
 
+#[cfg(feature = "wasm")]
+use wasm_bindgen::prelude::*;
+#[wasm_bindgen]
+pub fn init_panic_hook() {
+    console_error_panic_hook::set_once();
+}
+
 fn main() -> amethyst::Result<()> {
     #[cfg(not(feature = "wasm"))]
     amethyst::start_logger(Default::default());
@@ -49,8 +56,6 @@ fn main() -> amethyst::Result<()> {
     use crate::pong::Pong;
 
     let app_root = application_root_dir()?;
-
-    let display_config_path = app_root.join("config/display.ron");
 
     let key_bindings_path = {
         if cfg!(feature = "sdl_controller") {
@@ -67,20 +72,26 @@ fn main() -> amethyst::Result<()> {
     let event_loop = EventLoop::new();
 
     log::debug!("`DisplayConfig::load()`");
-    let display_config = DisplayConfig::load(display_config_path)?;
+    #[cfg(not(feature = "wasm"))]
+    let display_config = DisplayConfig::load(
+        app_root.join("config/display.ron")
+    )?;
+    #[cfg(feature = "wasm")]
+    let display_config = DisplayConfig::default();
+
     let game_data = GameDataBuilder::default()
         // Add the transform bundle which handles tracking entity positions
         .with_bundle(TransformBundle::new())?
         .with_bundle(
-            InputBundle::<StringBindings>::new().with_bindings_from_file(key_bindings_path)?,
+            InputBundle::<StringBindings>::new()/*.with_bindings_from_file(key_bindings_path)?*/,
         )?
-        .with_bundle(PongBundle)?
-        .with_bundle(AudioBundle::default())?
-        .with_system_desc(
-            DjSystemDesc::new(|music: &mut Music| music.music.next()),
-            "dj_system",
-            &[],
-        )
+        // .with_bundle(PongBundle)?
+        // .with_bundle(AudioBundle::default())?
+        // .with_system_desc(
+        //     DjSystemDesc::new(|music: &mut Music| music.music.next()),
+        //     "dj_system",
+        //     &[],
+        // )
         .with_bundle(UiBundle::<StringBindings>::new())?
         .with_bundle(
             RenderingBundle::<DefaultBackend>::new(display_config, &event_loop)
@@ -90,7 +101,7 @@ fn main() -> amethyst::Result<()> {
                     float32: [0.34, 0.36, 0.52, 1.0],
                 }))
                 .with_plugin(RenderFlat2D::default())
-                .with_plugin(RenderUi::default()),
+                // .with_plugin(RenderUi::default())
         )?;
 
     let game = Application::build(assets_dir, Pong::default())?
@@ -160,12 +171,19 @@ impl ScoreBoard {
 mod wasm {
     use wasm_bindgen::prelude::*;
 
-    #[wasm_bindgen(start)]
+    #[wasm_bindgen]
     pub fn run() {
-        wasm_logger::init(wasm_logger::Config::default());
+        // Make panic return a stack trace
+        crate::init_panic_hook();
+
+        wasm_logger::init(wasm_logger::Config::new(log::Level::Trace));
 
         log::debug!("run()");
 
-        let _ = super::main();
+        let res = super::main();
+        match res {
+            Ok(_) => log::info!("Exited without error"),
+            Err(e) => log::error!("Main returned an error: {:?}", e),
+        }
     }
 }

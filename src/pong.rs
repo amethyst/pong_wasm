@@ -26,10 +26,10 @@ impl SimpleState for Pong {
         // `spritesheet` is the layout of the sprites on the image;
         // `texture` is the pixel data.
         self.sprite_sheet_handle.replace(load_sprite_sheet(world));
-        initialise_paddles(world, self.sprite_sheet_handle.clone().unwrap());
+        // initialise_paddles(world, self.sprite_sheet_handle.clone().unwrap());
         initialise_camera(world);
-        initialise_audio(world);
-        initialise_score(world);
+        // initialise_audio(world);
+        // initialise_score(world);
     }
 
     fn update(&mut self, data: &mut StateData<'_, GameData<'_, '_>>) -> SimpleTrans {
