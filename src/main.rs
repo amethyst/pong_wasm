@@ -55,7 +55,9 @@ fn main() -> amethyst::Result<()> {
 
     use crate::pong::Pong;
 
+    log::debug!("before `application_root_dir()`");
     let app_root = application_root_dir()?;
+    log::debug!("{:?}", app_root);
 
     let key_bindings_path = {
         if cfg!(feature = "sdl_controller") {
