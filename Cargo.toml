@@ -13,7 +13,7 @@ name = "pong"
 path = "src/main.rs"
 
 [dependencies]
-amethyst = { path = "../amethyst", features = ["audio"] }
+amethyst = { git = "https://github.com/amethyst/amethyst.git", branch = "wasm", features = ["audio"] }
 wasm-logger = { version = "0.2.0", optional = true }
 log = "0.4.8"
 wasm-bindgen = { version = "0.2.59", optional = true }
