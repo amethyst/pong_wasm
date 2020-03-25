@@ -15,7 +15,7 @@ use amethyst::{
         plugins::{RenderFlat2D, RenderToWindow},
         rendy::hal::command::ClearColor,
         types::DefaultBackend,
-        RenderingBundle
+        RenderingBundle,
     },
     ui::{RenderUi, UiBundle},
     utils::application_root_dir,
@@ -44,6 +44,8 @@ const AUDIO_SCORE: &str = "audio/score.ogg";
 
 #[cfg(feature = "wasm")]
 use wasm_bindgen::prelude::*;
+
+#[cfg(feature = "wasm")]
 #[wasm_bindgen]
 pub fn init_panic_hook() {
     console_error_panic_hook::set_once();
@@ -75,9 +77,7 @@ fn main() -> amethyst::Result<()> {
 
     log::debug!("`DisplayConfig::load()`");
     #[cfg(not(feature = "wasm"))]
-    let display_config = DisplayConfig::load(
-        app_root.join("config/display.ron")
-    )?;
+    let display_config = DisplayConfig::load(app_root.join("config/display.ron"))?;
     #[cfg(feature = "wasm")]
     let display_config = DisplayConfig::default();
 
@@ -85,7 +85,7 @@ fn main() -> amethyst::Result<()> {
         // Add the transform bundle which handles tracking entity positions
         .with_bundle(TransformBundle::new())?
         .with_bundle(
-            InputBundle::<StringBindings>::new()/*.with_bindings_from_file(key_bindings_path)?*/,
+            InputBundle::<StringBindings>::new(), /*.with_bindings_from_file(key_bindings_path)?*/
         )?
         // .with_bundle(PongBundle)?
         // .with_bundle(AudioBundle::default())?
@@ -102,8 +102,8 @@ fn main() -> amethyst::Result<()> {
                 .with_plugin(RenderToWindow::new().with_clear(ClearColor {
                     float32: [0.34, 0.36, 0.52, 1.0],
                 }))
-                .with_plugin(RenderFlat2D::default())
-                // .with_plugin(RenderUi::default())
+                .with_plugin(RenderFlat2D::default()),
+            // .with_plugin(RenderUi::default())
         )?;
 
     let game = Application::build(assets_dir, Pong::default())?
