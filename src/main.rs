@@ -87,8 +87,13 @@ fn main() -> amethyst::Result<()> {
         .with_bundle(
             InputBundle::<StringBindings>::new(), /*.with_bindings_from_file(key_bindings_path)?*/
         )?
-        // .with_bundle(PongBundle)?
+        .with_bundle(PongBundle)?
         // .with_bundle(AudioBundle::default())?
+        .with(
+            amethyst::assets::Processor::<amethyst::audio::Source>::new(),
+            "source_processor",
+            &[],
+        )
         // .with_system_desc(
         //     DjSystemDesc::new(|music: &mut Music| music.music.next()),
         //     "dj_system",
@@ -102,8 +107,8 @@ fn main() -> amethyst::Result<()> {
                 .with_plugin(RenderToWindow::new().with_clear(ClearColor {
                     float32: [0.34, 0.36, 0.52, 1.0],
                 }))
-                .with_plugin(RenderFlat2D::default()),
-            // .with_plugin(RenderUi::default())
+                .with_plugin(RenderFlat2D::default())
+                .with_plugin(RenderUi::default()),
         )?;
 
     let game = Application::build(assets_dir, Pong::default())?

@@ -17,16 +17,16 @@ impl<'a, 'b> SystemBundle<'a, 'b> for PongBundle {
     ) -> Result<(), Error> {
         builder.add(PaddleSystem, "paddle_system", &["input_system"]);
         builder.add(MoveBallsSystem, "ball_system", &[]);
-        builder.add(
-            BounceSystem,
-            "collision_system",
-            &["paddle_system", "ball_system"],
-        );
-        builder.add(
-            WinnerSystem,
-            "winner_system",
-            &["paddle_system", "ball_system"],
-        );
+        // builder.add(
+        //     BounceSystem,
+        //     "collision_system",
+        //     &["paddle_system", "ball_system"],
+        // );
+        // builder.add(
+        //     WinnerSystem,
+        //     "winner_system",
+        //     &["paddle_system", "ball_system"],
+        // );
         Ok(())
     }
 }

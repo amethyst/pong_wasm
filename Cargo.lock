@@ -61,7 +61,7 @@ dependencies = [
 [[package]]
 name = "amethyst"
 version = "0.15.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#1d491d18310edb1432a51e602603e202496c2324"
+source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2192/fix-gl-rendering#a2d834dea96eaa6cab7d86333067b6199068cf7c"
 dependencies = [
  "amethyst_animation",
  "amethyst_assets",
@@ -98,7 +98,7 @@ dependencies = [
 [[package]]
 name = "amethyst_animation"
 version = "0.10.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#1d491d18310edb1432a51e602603e202496c2324"
+source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2192/fix-gl-rendering#a2d834dea96eaa6cab7d86333067b6199068cf7c"
 dependencies = [
  "amethyst_assets",
  "amethyst_core",
@@ -117,7 +117,7 @@ dependencies = [
 [[package]]
 name = "amethyst_assets"
 version = "0.11.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#1d491d18310edb1432a51e602603e202496c2324"
+source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2192/fix-gl-rendering#a2d834dea96eaa6cab7d86333067b6199068cf7c"
 dependencies = [
  "amethyst_core",
  "amethyst_derive",
@@ -144,7 +144,7 @@ dependencies = [
 [[package]]
 name = "amethyst_audio"
 version = "0.10.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#1d491d18310edb1432a51e602603e202496c2324"
+source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2192/fix-gl-rendering#a2d834dea96eaa6cab7d86333067b6199068cf7c"
 dependencies = [
  "amethyst_assets",
  "amethyst_core",
@@ -160,7 +160,7 @@ dependencies = [
 [[package]]
 name = "amethyst_config"
 version = "0.14.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#1d491d18310edb1432a51e602603e202496c2324"
+source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2192/fix-gl-rendering#a2d834dea96eaa6cab7d86333067b6199068cf7c"
 dependencies = [
  "log",
  "ron",
@@ -170,7 +170,7 @@ dependencies = [
 [[package]]
 name = "amethyst_controls"
 version = "0.9.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#1d491d18310edb1432a51e602603e202496c2324"
+source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2192/fix-gl-rendering#a2d834dea96eaa6cab7d86333067b6199068cf7c"
 dependencies = [
  "amethyst_assets",
  "amethyst_core",
@@ -187,7 +187,7 @@ dependencies = [
 [[package]]
 name = "amethyst_core"
 version = "0.10.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#1d491d18310edb1432a51e602603e202496c2324"
+source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2192/fix-gl-rendering#a2d834dea96eaa6cab7d86333067b6199068cf7c"
 dependencies = [
  "alga",
  "alga_derive",
@@ -210,7 +210,7 @@ dependencies = [
 [[package]]
 name = "amethyst_derive"
 version = "0.8.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#1d491d18310edb1432a51e602603e202496c2324"
+source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2192/fix-gl-rendering#a2d834dea96eaa6cab7d86333067b6199068cf7c"
 dependencies = [
  "heck",
  "proc-macro-crate",
@@ -223,7 +223,7 @@ dependencies = [
 [[package]]
 name = "amethyst_error"
 version = "0.5.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#1d491d18310edb1432a51e602603e202496c2324"
+source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2192/fix-gl-rendering#a2d834dea96eaa6cab7d86333067b6199068cf7c"
 dependencies = [
  "backtrace",
 ]
@@ -231,7 +231,7 @@ dependencies = [
 [[package]]
 name = "amethyst_input"
 version = "0.11.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#1d491d18310edb1432a51e602603e202496c2324"
+source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2192/fix-gl-rendering#a2d834dea96eaa6cab7d86333067b6199068cf7c"
 dependencies = [
  "amethyst_config",
  "amethyst_core",
@@ -248,7 +248,7 @@ dependencies = [
 [[package]]
 name = "amethyst_locale"
 version = "0.9.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#1d491d18310edb1432a51e602603e202496c2324"
+source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2192/fix-gl-rendering#a2d834dea96eaa6cab7d86333067b6199068cf7c"
 dependencies = [
  "amethyst_assets",
  "amethyst_core",
@@ -261,7 +261,7 @@ dependencies = [
 [[package]]
 name = "amethyst_network"
 version = "0.8.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#1d491d18310edb1432a51e602603e202496c2324"
+source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2192/fix-gl-rendering#a2d834dea96eaa6cab7d86333067b6199068cf7c"
 dependencies = [
  "amethyst_core",
  "amethyst_error",
@@ -273,7 +273,7 @@ dependencies = [
 [[package]]
 name = "amethyst_rendy"
 version = "0.5.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#1d491d18310edb1432a51e602603e202496c2324"
+source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2192/fix-gl-rendering#a2d834dea96eaa6cab7d86333067b6199068cf7c"
 dependencies = [
  "amethyst_assets",
  "amethyst_config",
@@ -301,7 +301,7 @@ dependencies = [
 [[package]]
 name = "amethyst_ui"
 version = "0.10.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#1d491d18310edb1432a51e602603e202496c2324"
+source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2192/fix-gl-rendering#a2d834dea96eaa6cab7d86333067b6199068cf7c"
 dependencies = [
  "amethyst_assets",
  "amethyst_audio",
@@ -333,7 +333,7 @@ dependencies = [
 [[package]]
 name = "amethyst_utils"
 version = "0.10.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#1d491d18310edb1432a51e602603e202496c2324"
+source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2192/fix-gl-rendering#a2d834dea96eaa6cab7d86333067b6199068cf7c"
 dependencies = [
  "amethyst_assets",
  "amethyst_controls",
@@ -352,7 +352,7 @@ dependencies = [
 [[package]]
 name = "amethyst_window"
 version = "0.5.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#1d491d18310edb1432a51e602603e202496c2324"
+source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2192/fix-gl-rendering#a2d834dea96eaa6cab7d86333067b6199068cf7c"
 dependencies = [
  "amethyst_config",
  "amethyst_core",
@@ -421,11 +421,11 @@ checksum = "cff77d8686867eceff3105329d4698d96c2391c176d5d03adc90c7389162b5b8"
 
 [[package]]
 name = "ash"
-version = "0.29.0"
+version = "0.30.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "003d1fb2eb12eb06d4a03dbe02eea67a9fac910fa97932ab9e3a75b96a1ea5e5"
+checksum = "69daec0742947f33a85931fa3cb0ce5f07929159dcbd1f0cbb5b2912e2978509"
 dependencies = [
- "shared_library",
+ "libloading",
 ]
 
 [[package]]
@@ -681,8 +681,23 @@ checksum = "f29f7768b2d1be17b96158e3285951d366b40211320fb30826a76cb7a0da6400"
 dependencies = [
  "bitflags",
  "block",
- "core-foundation",
- "core-graphics",
+ "core-foundation 0.6.4",
+ "core-graphics 0.17.3",
+ "foreign-types",
+ "libc",
+ "objc",
+]
+
+[[package]]
+name = "cocoa"
+version = "0.20.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0a4736c86d51bd878b474400d9ec888156f4037015f5d09794fab9f26eab1ad4"
+dependencies = [
+ "bitflags",
+ "block",
+ "core-foundation 0.7.0",
+ "core-graphics 0.19.0",
  "foreign-types",
  "libc",
  "objc",
@@ -759,7 +774,17 @@ version = "0.6.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "25b9e03f145fd4f2bf705e07b900cd41fc636598fe5dc452fd0db1441c3f496d"
 dependencies = [
- "core-foundation-sys",
+ "core-foundation-sys 0.6.2",
+ "libc",
+]
+
+[[package]]
+name = "core-foundation"
+version = "0.7.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "57d24c7a13c43e870e37c1556b74555437870a04514f7685f5b354e090567171"
+dependencies = [
+ "core-foundation-sys 0.7.0",
  "libc",
 ]
 
@@ -770,13 +795,31 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e7ca8a5221364ef15ce201e8ed2f609fc312682a8f4e0e3d4aa5879764e0fa3b"
 
 [[package]]
+name = "core-foundation-sys"
+version = "0.7.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b3a71ab494c0b5b860bdc8407ae08978052417070c2ced38573a9157ad75b8ac"
+
+[[package]]
 name = "core-graphics"
 version = "0.17.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "56790968ab1c8a1202a102e6de05fc6e1ec87da99e4e93e9a7d13efbfc1e95a9"
 dependencies = [
  "bitflags",
- "core-foundation",
+ "core-foundation 0.6.4",
+ "foreign-types",
+ "libc",
+]
+
+[[package]]
+name = "core-graphics"
+version = "0.19.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "59e78b2e0aaf43f08e7ae0d6bc96895ef72ff0921c7d4ff4762201b2dba376dd"
+dependencies = [
+ "bitflags",
+ "core-foundation 0.7.0",
  "foreign-types",
  "libc",
 ]
@@ -788,8 +831,8 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8dc065219542086f72d1e9f7aadbbab0989e980263695d129d502082d063a9d0"
 dependencies = [
  "cfg-if",
- "core-foundation-sys",
- "core-graphics",
+ "core-foundation-sys 0.6.2",
+ "core-graphics 0.17.3",
  "libc",
  "objc",
 ]
@@ -820,7 +863,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6b55d55d69f403f62a95bd3c04b431e0aedf5120c70f15d07a8edd234443dd59"
 dependencies = [
  "alsa-sys",
- "core-foundation-sys",
+ "core-foundation-sys 0.6.2",
  "coreaudio-rs",
  "lazy_static",
  "libc",
@@ -1237,8 +1280,8 @@ dependencies = [
 
 [[package]]
 name = "gfx-auxil"
-version = "0.2.0"
-source = "git+https://github.com/amethyst/gfx?branch=wasm#3e6db5f0853a62eb318ac13a3598714cc94c7471"
+version = "0.3.0"
+source = "git+https://github.com/amethyst/gfx?branch=wasm#672f551ab28eccffde68f8818ac4fb7ac3f28000"
 dependencies = [
  "fxhash",
  "gfx-hal",
@@ -1247,8 +1290,8 @@ dependencies = [
 
 [[package]]
 name = "gfx-backend-empty"
-version = "0.4.0"
-source = "git+https://github.com/amethyst/gfx?branch=wasm#3e6db5f0853a62eb318ac13a3598714cc94c7471"
+version = "0.5.0"
+source = "git+https://github.com/amethyst/gfx?branch=wasm#672f551ab28eccffde68f8818ac4fb7ac3f28000"
 dependencies = [
  "gfx-hal",
  "raw-window-handle",
@@ -1256,8 +1299,8 @@ dependencies = [
 
 [[package]]
 name = "gfx-backend-gl"
-version = "0.4.0"
-source = "git+https://github.com/amethyst/gfx?branch=wasm#3e6db5f0853a62eb318ac13a3598714cc94c7471"
+version = "0.5.0"
+source = "git+https://github.com/amethyst/gfx?branch=wasm#672f551ab28eccffde68f8818ac4fb7ac3f28000"
 dependencies = [
  "arrayvec 0.5.1",
  "bitflags",
@@ -1280,15 +1323,15 @@ dependencies = [
 
 [[package]]
 name = "gfx-backend-metal"
-version = "0.4.3"
-source = "git+https://github.com/amethyst/gfx?branch=wasm#3e6db5f0853a62eb318ac13a3598714cc94c7471"
+version = "0.5.0"
+source = "git+https://github.com/amethyst/gfx?branch=wasm#672f551ab28eccffde68f8818ac4fb7ac3f28000"
 dependencies = [
  "arrayvec 0.5.1",
  "bitflags",
  "block",
- "cocoa",
+ "cocoa 0.20.0",
  "copyless",
- "core-graphics",
+ "core-graphics 0.19.0",
  "foreign-types",
  "gfx-auxil",
  "gfx-hal",
@@ -1306,13 +1349,13 @@ dependencies = [
 
 [[package]]
 name = "gfx-backend-vulkan"
-version = "0.4.0"
-source = "git+https://github.com/amethyst/gfx?branch=wasm#3e6db5f0853a62eb318ac13a3598714cc94c7471"
+version = "0.5.0"
+source = "git+https://github.com/amethyst/gfx?branch=wasm#672f551ab28eccffde68f8818ac4fb7ac3f28000"
 dependencies = [
  "arrayvec 0.5.1",
  "ash",
  "byteorder",
- "core-graphics",
+ "core-graphics 0.19.0",
  "gfx-hal",
  "lazy_static",
  "log",
@@ -1325,13 +1368,12 @@ dependencies = [
 
 [[package]]
 name = "gfx-hal"
-version = "0.4.1"
-source = "git+https://github.com/amethyst/gfx?branch=wasm#3e6db5f0853a62eb318ac13a3598714cc94c7471"
+version = "0.5.0"
+source = "git+https://github.com/amethyst/gfx?branch=wasm#672f551ab28eccffde68f8818ac4fb7ac3f28000"
 dependencies = [
  "bitflags",
  "raw-window-handle",
  "serde",
- "smallvec 1.2.0",
 ]
 
 [[package]]
@@ -1385,9 +1427,9 @@ checksum = "9b919933a397b79c37e33b77bb2aa3dc8eb6e165ad809e58ff75bc7db2e34574"
 
 [[package]]
 name = "glow"
-version = "0.3.0-alpha4"
+version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e1a6a561d672c476b6a6fc49b0b3bc7b061bbfd3a6f103055ae4530abc04a41e"
+checksum = "31aed196700daf16e1241d819ff4a4855a78ee0cddb051948d50b9213deec82f"
 dependencies = [
  "gl_generator 0.13.1",
  "js-sys",
@@ -1423,9 +1465,9 @@ source = "git+https://github.com/amethyst/glutin.git?branch=wasm#f29d87a36ce7725
 dependencies = [
  "android_glue",
  "cgl",
- "cocoa",
- "core-foundation",
- "core-graphics",
+ "cocoa 0.19.1",
+ "core-foundation 0.6.4",
+ "core-graphics 0.17.3",
  "glutin_egl_sys",
  "glutin_emscripten_sys",
  "glutin_gles2_sys",
@@ -1664,9 +1706,9 @@ dependencies = [
 
 [[package]]
 name = "js-sys"
-version = "0.3.36"
+version = "0.3.37"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1cb931d43e71f560c81badb0191596562bafad2be06a3f9025b845c847c60df5"
+checksum = "6a27d435371a2fa5b6d2b028a74bbdb1234f308da363226a2854ca3ff8ba7055"
 dependencies = [
  "wasm-bindgen",
 ]
@@ -1862,14 +1904,14 @@ dependencies = [
 
 [[package]]
 name = "metal"
-version = "0.17.1"
+version = "0.18.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f83c7dcc2038e12f68493fa3de44235df27b2497178e257185b4b5b5d028a1e4"
+checksum = "e198a0ee42bdbe9ef2c09d0b9426f3b2b47d90d93a4a9b0395c4cea605e92dc0"
 dependencies = [
  "bitflags",
  "block",
- "cocoa",
- "core-graphics",
+ "cocoa 0.20.0",
+ "core-graphics 0.19.0",
  "foreign-types",
  "log",
  "objc",
@@ -2260,9 +2302,9 @@ dependencies = [
 
 [[package]]
 name = "paste"
-version = "0.1.8"
+version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8292c1e1e81ddb552c4c90c36af201a0ce7e34995f55f0480f01052f242811c9"
+checksum = "092d791bf7847f70bbd49085489fba25fc2c193571752bff9e36e74e72403932"
 dependencies = [
  "paste-impl",
  "proc-macro-hack",
@@ -2270,9 +2312,9 @@ dependencies = [
 
 [[package]]
 name = "paste-impl"
-version = "0.1.8"
+version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5e9c43f2645f06ee452544ad032886a75f3d1797b9487dcadcae9100ba58a51c"
+checksum = "406c23fb4c45cc6f68a9bbabb8ec7bd6f8cfcbd17e9e8f72c2460282f8325729"
 dependencies = [
  "proc-macro-hack",
  "proc-macro2 1.0.9",
@@ -2646,7 +2688,7 @@ dependencies = [
 [[package]]
 name = "range-alloc"
 version = "0.1.0"
-source = "git+https://github.com/amethyst/gfx?branch=wasm#3e6db5f0853a62eb318ac13a3598714cc94c7471"
+source = "git+https://github.com/amethyst/gfx?branch=wasm#672f551ab28eccffde68f8818ac4fb7ac3f28000"
 
 [[package]]
 name = "raw-window-handle"
@@ -2745,7 +2787,7 @@ dependencies = [
 [[package]]
 name = "rendy"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#4de9ca2a79e62646117eaa1e53f7efe9abf3e40d"
 dependencies = [
  "rendy-command",
  "rendy-core",
@@ -2766,7 +2808,7 @@ dependencies = [
 [[package]]
 name = "rendy-chain"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#4de9ca2a79e62646117eaa1e53f7efe9abf3e40d"
 dependencies = [
  "log",
  "rendy-core",
@@ -2776,7 +2818,7 @@ dependencies = [
 [[package]]
 name = "rendy-command"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#4de9ca2a79e62646117eaa1e53f7efe9abf3e40d"
 dependencies = [
  "relevant",
  "rendy-core",
@@ -2787,7 +2829,7 @@ dependencies = [
 [[package]]
 name = "rendy-core"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#4de9ca2a79e62646117eaa1e53f7efe9abf3e40d"
 dependencies = [
  "gfx-backend-empty",
  "gfx-backend-gl",
@@ -2805,7 +2847,7 @@ dependencies = [
 [[package]]
 name = "rendy-descriptor"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#4de9ca2a79e62646117eaa1e53f7efe9abf3e40d"
 dependencies = [
  "fxhash",
  "gfx-hal",
@@ -2817,7 +2859,7 @@ dependencies = [
 [[package]]
 name = "rendy-factory"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#4de9ca2a79e62646117eaa1e53f7efe9abf3e40d"
 dependencies = [
  "either",
  "log",
@@ -2837,7 +2879,7 @@ dependencies = [
 [[package]]
 name = "rendy-frame"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#4de9ca2a79e62646117eaa1e53f7efe9abf3e40d"
 dependencies = [
  "either",
  "log",
@@ -2854,7 +2896,7 @@ dependencies = [
 [[package]]
 name = "rendy-graph"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#4de9ca2a79e62646117eaa1e53f7efe9abf3e40d"
 dependencies = [
  "bitflags",
  "either",
@@ -2877,7 +2919,7 @@ dependencies = [
 [[package]]
 name = "rendy-init"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#4de9ca2a79e62646117eaa1e53f7efe9abf3e40d"
 dependencies = [
  "log",
  "rendy-command",
@@ -2892,7 +2934,7 @@ dependencies = [
 [[package]]
 name = "rendy-memory"
 version = "0.5.3"
-source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#4de9ca2a79e62646117eaa1e53f7efe9abf3e40d"
 dependencies = [
  "colorful",
  "gfx-hal",
@@ -2907,7 +2949,7 @@ dependencies = [
 [[package]]
 name = "rendy-mesh"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#4de9ca2a79e62646117eaa1e53f7efe9abf3e40d"
 dependencies = [
  "log",
  "rendy-command",
@@ -2924,7 +2966,7 @@ dependencies = [
 [[package]]
 name = "rendy-resource"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#4de9ca2a79e62646117eaa1e53f7efe9abf3e40d"
 dependencies = [
  "crossbeam-channel 0.3.9",
  "log",
@@ -2938,7 +2980,7 @@ dependencies = [
 [[package]]
 name = "rendy-shader"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#4de9ca2a79e62646117eaa1e53f7efe9abf3e40d"
 dependencies = [
  "log",
  "rendy-core",
@@ -2950,7 +2992,7 @@ dependencies = [
 [[package]]
 name = "rendy-texture"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#4de9ca2a79e62646117eaa1e53f7efe9abf3e40d"
 dependencies = [
  "image",
  "log",
@@ -2966,7 +3008,7 @@ dependencies = [
 [[package]]
 name = "rendy-wsi"
 version = "0.5.1"
-source = "git+https://github.com/amethyst/rendy.git?branch=wasm#757c4aa9b3e7d0cfc5e9ff167e14c3040ede0d30"
+source = "git+https://github.com/amethyst/rendy.git?branch=wasm#4de9ca2a79e62646117eaa1e53f7efe9abf3e40d"
 dependencies = [
  "log",
  "relevant",
@@ -3500,9 +3542,9 @@ checksum = "4bac79c4b51eda1b090b1edebfb667821bbb51f713855164dc7cec2cb8ac2ba3"
 
 [[package]]
 name = "tinyvec"
-version = "0.3.2"
+version = "0.3.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "46a29940196b909d4797875c05ebd35b12fafeb2a25a98288a77c3ac8b93199d"
+checksum = "53953d2d3a5ad81d9f844a32f14ebb121f50b650cd59d0ee2a07cf13c617efed"
 
 [[package]]
 name = "toml"
@@ -3663,9 +3705,9 @@ checksum = "cccddf32554fecc6acb585f82a32a72e28b48f8c4c1883ddfeeeaa96f7d8e519"
 
 [[package]]
 name = "wasm-bindgen"
-version = "0.2.59"
+version = "0.2.60"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3557c397ab5a8e347d434782bcd31fc1483d927a6826804cec05cc792ee2519d"
+checksum = "2cc57ce05287f8376e998cbddfb4c8cb43b84a7ec55cf4551d7c00eef317a47f"
 dependencies = [
  "cfg-if",
  "serde",
@@ -3675,9 +3717,9 @@ dependencies = [
 
 [[package]]
 name = "wasm-bindgen-backend"
-version = "0.2.59"
+version = "0.2.60"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e0da9c9a19850d3af6df1cb9574970b566d617ecfaf36eb0b706b6f3ef9bd2f8"
+checksum = "d967d37bf6c16cca2973ca3af071d0a2523392e4a594548155d89a678f4237cd"
 dependencies = [
  "bumpalo",
  "lazy_static",
@@ -3690,9 +3732,9 @@ dependencies = [
 
 [[package]]
 name = "wasm-bindgen-futures"
-version = "0.4.9"
+version = "0.4.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "457414a91863c0ec00090dba537f88ab955d93ca6555862c29b6d860990b8a8a"
+checksum = "7add542ea1ac7fdaa9dc25e031a6af33b7d63376292bd24140c637d00d1c312a"
 dependencies = [
  "cfg-if",
  "js-sys",
@@ -3702,9 +3744,9 @@ dependencies = [
 
 [[package]]
 name = "wasm-bindgen-macro"
-version = "0.2.59"
+version = "0.2.60"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0f6fde1d36e75a714b5fe0cffbb78978f222ea6baebb726af13c78869fdb4205"
+checksum = "8bd151b63e1ea881bb742cd20e1d6127cef28399558f3b5d415289bc41eee3a4"
 dependencies = [
  "quote 1.0.3",
  "wasm-bindgen-macro-support",
@@ -3712,9 +3754,9 @@ dependencies = [
 
 [[package]]
 name = "wasm-bindgen-macro-support"
-version = "0.2.59"
+version = "0.2.60"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "25bda4168030a6412ea8a047e27238cadf56f0e53516e1e83fec0a8b7c786f6d"
+checksum = "d68a5b36eef1be7868f668632863292e37739656a80fc4b9acec7b0bd35a4931"
 dependencies = [
  "proc-macro2 1.0.9",
  "quote 1.0.3",
@@ -3725,9 +3767,9 @@ dependencies = [
 
 [[package]]
 name = "wasm-bindgen-shared"
-version = "0.2.59"
+version = "0.2.60"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fc9f36ad51f25b0219a3d4d13b90eb44cd075dff8b6280cca015775d7acaddd8"
+checksum = "daf76fe7d25ac79748a37538b7daeed1c7a6867c92d3245c12c6222e4a20d639"
 
 [[package]]
 name = "wasm-logger"
@@ -3811,9 +3853,9 @@ dependencies = [
 
 [[package]]
 name = "web-sys"
-version = "0.3.36"
+version = "0.3.37"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "721c6263e2c66fd44501cc5efbfa2b7dfa775d13e4ea38c46299646ed1f9c70a"
+checksum = "2d6f51648d8c56c366144378a33290049eafdd784071077f6fe37dae64c1c4cb"
 dependencies = [
  "js-sys",
  "wasm-bindgen",
@@ -3884,9 +3926,9 @@ source = "git+https://github.com/amethyst/winit.git?branch=wasm#c84778c93a6a5f29
 dependencies = [
  "android_glue",
  "bitflags",
- "cocoa",
- "core-foundation",
- "core-graphics",
+ "cocoa 0.19.1",
+ "core-foundation 0.6.4",
+ "core-graphics 0.17.3",
  "core-video-sys",
  "dispatch",
  "instant",
