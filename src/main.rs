@@ -5,6 +5,8 @@ mod bundle;
 mod pong;
 mod systems;
 
+use std::{path::Path, time::Duration};
+
 use amethyst::{
     audio::{AudioBundle, DjSystemDesc},
     core::{frame_limiter::FrameRateLimitStrategy, transform::TransformBundle},
@@ -23,7 +25,6 @@ use amethyst::{
 };
 
 use crate::{audio::Music, bundle::PongBundle};
-use std::time::Duration;
 
 const ARENA_HEIGHT: f32 = 100.0;
 const ARENA_WIDTH: f32 = 100.0;
@@ -51,10 +52,77 @@ pub fn init_panic_hook() {
     console_error_panic_hook::set_once();
 }
 
+#[cfg(not(feature = "wasm"))]
 fn main() -> amethyst::Result<()> {
-    #[cfg(not(feature = "wasm"))]
     amethyst::start_logger(Default::default());
 
+    let rendering_bundle_fn = |app_root: &Path, event_loop: &EventLoop<()>| {
+        let display_config = DisplayConfig::load(app_root.join("config/display.ron"))?;
+        let rendering_bundle = RenderingBundle::<DefaultBackend>::new(display_config, event_loop);
+
+        Ok(rendering_bundle)
+    };
+
+    run_application(rendering_bundle_fn)
+}
+
+#[allow(unused)]
+#[cfg(feature = "wasm")]
+fn main() {}
+
+#[cfg(feature = "wasm")]
+mod wasm {
+    use std::path::Path;
+
+    use amethyst::{
+        renderer::{types::DefaultBackend, RenderingBundle},
+        window::{DisplayConfig, EventLoop},
+    };
+    use wasm_bindgen::prelude::*;
+    use web_sys::HtmlCanvasElement;
+
+    #[wasm_bindgen]
+    pub fn run(canvas_element: Option<HtmlCanvasElement>) {
+        // Make panic return a stack trace
+        crate::init_panic_hook();
+
+        wasm_logger::init(wasm_logger::Config::new(log::Level::Trace));
+
+        log::debug!("run()");
+        log::debug!("canvas element: {:?}", canvas_element);
+
+        let dimensions = canvas_element
+            .as_ref()
+            .map(|canvas_element| (canvas_element.width(), canvas_element.height()));
+        log::debug!("dimensions: {:?}", dimensions);
+
+        let mut display_config = DisplayConfig {
+            dimensions,
+            ..Default::default()
+        };
+
+        let rendering_bundle_fn = move |_: &Path, event_loop: &EventLoop<()>| {
+            let rendering_bundle =
+                RenderingBundle::<DefaultBackend>::new(display_config, event_loop, canvas_element);
+
+            Ok(rendering_bundle)
+        };
+
+        let res = super::run_application(rendering_bundle_fn);
+        match res {
+            Ok(_) => log::info!("Exited without error"),
+            Err(e) => log::error!("Main returned an error: {:?}", e),
+        }
+    }
+}
+
+fn run_application<FnRenderingBundle>(
+    rendering_bundle_fn: FnRenderingBundle,
+) -> amethyst::Result<()>
+where
+    FnRenderingBundle:
+        FnOnce(&Path, &EventLoop<()>) -> amethyst::Result<RenderingBundle<DefaultBackend>>,
+{
     use crate::pong::Pong;
 
     log::debug!("before `application_root_dir()`");
@@ -75,11 +143,7 @@ fn main() -> amethyst::Result<()> {
     log::debug!("`EventLoop::new()`");
     let event_loop = EventLoop::new();
 
-    log::debug!("`DisplayConfig::load()`");
-    #[cfg(not(feature = "wasm"))]
-    let display_config = DisplayConfig::load(app_root.join("config/display.ron"))?;
-    #[cfg(feature = "wasm")]
-    let display_config = DisplayConfig::default();
+    let rendering_bundle = rendering_bundle_fn(&app_root, &event_loop)?;
 
     let game_data = GameDataBuilder::default()
         // Add the transform bundle which handles tracking entity positions
@@ -101,7 +165,7 @@ fn main() -> amethyst::Result<()> {
         // )
         .with_bundle(UiBundle::<StringBindings>::new())?
         .with_bundle(
-            RenderingBundle::<DefaultBackend>::new(display_config, &event_loop)
+            rendering_bundle
                 // The RenderToWindow plugin provides all the scaffolding for opening a window and
                 // drawing on it
                 .with_plugin(RenderToWindow::new().with_clear(ClearColor {
@@ -170,27 +234,6 @@ impl ScoreBoard {
         ScoreBoard {
             score_left: 0,
             score_right: 0,
-        }
-    }
-}
-
-#[cfg(feature = "wasm")]
-mod wasm {
-    use wasm_bindgen::prelude::*;
-
-    #[wasm_bindgen]
-    pub fn run() {
-        // Make panic return a stack trace
-        crate::init_panic_hook();
-
-        wasm_logger::init(wasm_logger::Config::new(log::Level::Trace));
-
-        log::debug!("run()");
-
-        let res = super::main();
-        match res {
-            Ok(_) => log::info!("Exited without error"),
-            Err(e) => log::error!("Main returned an error: {:?}", e),
         }
     }
 }
