@@ -1,15 +1,15 @@
 use crate::{
     audio::{play_bounce, Sounds},
-    Ball, Paddle, Side,
     event::PongEvent,
+    Ball, Paddle, Side,
 };
 use amethyst::{
     assets::AssetStorage,
     audio::{output::Output, Source},
     core::transform::Transform,
     derive::SystemDesc,
-    shrev::EventChannel,
     ecs::prelude::{Join, Read, ReadExpect, ReadStorage, System, SystemData, Write, WriteStorage},
+    shrev::EventChannel,
 };
 use std::ops::Deref;
 
@@ -26,10 +26,7 @@ impl<'s> System<'s> for BounceSystem {
         Write<'s, EventChannel<PongEvent>>,
     );
 
-    fn run(
-        &mut self,
-        (mut balls, paddles, transforms, mut pong_events): Self::SystemData,
-    ) {
+    fn run(&mut self, (mut balls, paddles, transforms, mut pong_events): Self::SystemData) {
         // Check whether a ball collided, and bounce off accordingly.
         //
         // We also check for the velocity of the ball every time, to prevent multiple collisions
@@ -47,12 +44,12 @@ impl<'s> System<'s> for BounceSystem {
                 ball.velocity[1] = -ball.velocity[1];
                 pong_events.single_write(PongEvent::Bounce);
             }
-            
+
             // Bounce at the paddles.
             for (paddle, paddle_transform) in (&paddles, &transforms).join() {
                 let paddle_x = paddle_transform.translation().x - (paddle.width * 0.5);
                 let paddle_y = paddle_transform.translation().y - (paddle.height * 0.5);
-                
+
                 // To determine whether the ball has collided with a paddle, we create a larger
                 // rectangle around the current one, by subtracting the ball radius from the
                 // lowest coordinates, and adding the ball radius to the highest ones. The ball
@@ -66,7 +63,7 @@ impl<'s> System<'s> for BounceSystem {
                     paddle_x + (paddle.width + ball.radius),
                     paddle_y + (paddle.height + ball.radius),
                 ) && ((paddle.side == Side::Left && ball.velocity[0] < 0.0)
-                || (paddle.side == Side::Right && ball.velocity[0] > 0.0))
+                    || (paddle.side == Side::Right && ball.velocity[0] > 0.0))
                 {
                     ball.velocity[0] = -ball.velocity[0];
                     pong_events.single_write(PongEvent::Bounce);

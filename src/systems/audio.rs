@@ -29,21 +29,23 @@ impl<'s> System<'s> for AudioSystem {
             .expect("AudioSystem::setup has not been called");
 
         if let Some(sounds) = sounds {
-            pong_events
-                .read(reader)
-                .for_each(|ev| match ev {
-                    PongEvent::Bounce => {
-                        play_bounce(&*sounds, &storage, audio_output.as_ref().map(|o| o.deref()))
-                    }
-                    PongEvent::Score => {
-                        play_score(&*sounds, &storage, audio_output.as_ref().map(|o| o.deref()))
-                    }
-                });
+            pong_events.read(reader).for_each(|ev| match ev {
+                PongEvent::Bounce => {
+                    play_bounce(&*sounds, &storage, audio_output.as_ref().map(|o| o.deref()))
+                }
+                PongEvent::Score => {
+                    play_score(&*sounds, &storage, audio_output.as_ref().map(|o| o.deref()))
+                }
+            });
         }
     }
 
     fn setup(&mut self, world: &mut World) {
-        Self::SystemData::setup(world); 
-        self.pong_event_reader = Some(world.fetch_mut::<EventChannel<PongEvent>>().register_reader());
+        Self::SystemData::setup(world);
+        self.pong_event_reader = Some(
+            world
+                .fetch_mut::<EventChannel<PongEvent>>()
+                .register_reader(),
+        );
     }
 }

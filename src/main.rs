@@ -177,20 +177,19 @@ where
             .with_plugin(RenderFlat2D::default())
             .with_plugin(RenderUi::default()),
         )?;
-        
-        // Sound is currently not supported on wasm target 
-        #[cfg(not(feature = "wasm"))] 
-        let game_data = game_data
-            .with_system_desc(
-                DjSystemDesc::new(|music: &mut Music| music.music.next()),
-                "dj_system",
-                &[],
-            )
-            .with_bundle(AudioBundle::default())?;
-    
-        let game_data = game_data
-        .with_bundle(PongBundle)?;
-                
+
+    // Sound is currently not supported on wasm target
+    #[cfg(not(feature = "wasm"))]
+    let game_data = game_data
+        .with_system_desc(
+            DjSystemDesc::new(|music: &mut Music| music.music.next()),
+            "dj_system",
+            &[],
+        )
+        .with_bundle(AudioBundle::default())?;
+
+    let game_data = game_data.with_bundle(PongBundle)?;
+
     let game = Application::build(assets_dir, Pong::default())?
         .with_frame_limit(
             FrameRateLimitStrategy::SleepAndYield(Duration::from_millis(2)),

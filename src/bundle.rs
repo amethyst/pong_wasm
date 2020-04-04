@@ -29,7 +29,11 @@ impl<'a, 'b> SystemBundle<'a, 'b> for PongBundle {
         );
 
         #[cfg(not(feature = "wasm"))]
-        builder.add(AudioSystem::default(), "pong_audio_system", &["winner_system", "collision_system"]);
+        builder.add(
+            AudioSystem::default(),
+            "pong_audio_system",
+            &["winner_system", "collision_system"],
+        );
         Ok(())
     }
 }
