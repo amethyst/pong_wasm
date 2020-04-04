@@ -11,7 +11,7 @@ use amethyst::{
     audio::{AudioBundle, DjSystemDesc},
     core::{frame_limiter::FrameRateLimitStrategy, transform::TransformBundle},
     ecs::{Component, DenseVecStorage},
-    input::{InputBundle, StringBindings},
+    input::{Axis, Bindings, Button, InputBundle, StringBindings},
     prelude::*,
     renderer::{
         plugins::{RenderFlat2D, RenderToWindow},
@@ -22,6 +22,7 @@ use amethyst::{
     ui::{RenderUi, UiBundle},
     utils::application_root_dir,
     window::{DisplayConfig, EventLoop},
+    winit::event::VirtualKeyCode,
 };
 
 use crate::{audio::Music, bundle::PongBundle};
@@ -145,11 +146,24 @@ where
 
     let rendering_bundle = rendering_bundle_fn(&app_root, &event_loop)?;
 
+    let mut bindings = Bindings::<StringBindings>::new();
+    let left_paddle_axis = Axis::Emulated {
+        pos: Button::Key(VirtualKeyCode::W),
+        neg: Button::Key(VirtualKeyCode::S),
+    };
+    bindings.insert_axis("left_paddle", left_paddle_axis);
+    let right_paddle_axis = Axis::Emulated {
+        pos: Button::Key(VirtualKeyCode::Up),
+        neg: Button::Key(VirtualKeyCode::Down),
+    };
+    bindings.insert_axis("right_paddle", right_paddle_axis);
+
     let game_data = GameDataBuilder::default()
         // Add the transform bundle which handles tracking entity positions
         .with_bundle(TransformBundle::new())?
         .with_bundle(
-            InputBundle::<StringBindings>::new(), /*.with_bindings_from_file(key_bindings_path)?*/
+            InputBundle::<StringBindings>::new()
+                .with_bindings(bindings), /*.with_bindings_from_file(key_bindings_path)?*/
         )?
         .with_bundle(PongBundle)?
         // .with_bundle(AudioBundle::default())?
