@@ -2,6 +2,7 @@
 
 mod audio;
 mod bundle;
+mod event;
 mod pong;
 mod systems;
 

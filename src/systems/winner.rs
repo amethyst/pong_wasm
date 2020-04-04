@@ -1,9 +1,10 @@
-use crate::{audio::Sounds, Ball, ScoreBoard};
+use crate::{audio::Sounds, Ball, ScoreBoard, event::PongEvent};
 use amethyst::{
     assets::AssetStorage,
     audio::{output::Output, Source},
     core::Transform,
     derive::SystemDesc,
+    shrev::EventChannel,
     ecs::prelude::{Entity, Join, Read, ReadExpect, System, SystemData, Write, WriteStorage},
     ui::UiText,
 };
@@ -20,10 +21,8 @@ impl<'s> System<'s> for WinnerSystem {
         WriteStorage<'s, Transform>,
         WriteStorage<'s, UiText>,
         Write<'s, ScoreBoard>,
-        Read<'s, AssetStorage<Source>>,
-        ReadExpect<'s, Sounds>,
+        Write<'s, EventChannel<PongEvent>>,
         ReadExpect<'s, ScoreText>,
-        Option<Read<'s, Output>>,
     );
 
     fn run(
@@ -33,10 +32,8 @@ impl<'s> System<'s> for WinnerSystem {
             mut transforms,
             mut text,
             mut score_board,
-            storage,
-            sounds,
+            mut pong_events,
             score_text,
-            audio_output,
         ): Self::SystemData,
     ) {
         for (ball, transform) in (&mut balls, &mut transforms).join() {
@@ -75,12 +72,8 @@ impl<'s> System<'s> for WinnerSystem {
                     score_board.score_left, score_board.score_right
                 );
 
-                // Play audio.
-                if let Some(ref output) = audio_output {
-                    if let Some(sound) = storage.get(&sounds.score_sfx) {
-                        output.play_once(sound, 1.0);
-                    }
-                }
+                // Writes an event for the audio system to pick up
+                pong_events.single_write(PongEvent::Score)
             }
         }
     }
