@@ -8,6 +8,7 @@ use amethyst::shrev::{EventChannel, ReaderId};
 
 use std::ops::Deref;
 
+#[derive(Default)]
 pub struct AudioSystem {
     pong_event_reader: Option<ReaderId<PongEvent>>,
 }
@@ -15,7 +16,7 @@ pub struct AudioSystem {
 impl<'s> System<'s> for AudioSystem {
     type SystemData = (
         Read<'s, AssetStorage<Source>>,
-        ReadExpect<'s, Sounds>,
+        Option<Read<'s, Sounds>>,
         Option<Read<'s, Output>>,
         Read<'s, EventChannel<PongEvent>>,
     );
@@ -27,16 +28,18 @@ impl<'s> System<'s> for AudioSystem {
             .as_mut()
             .expect("AudioSystem::setup has not been called");
 
-        pong_events
-            .read(reader)
-            .for_each(|ev| match ev {
-                PongEvent::Bounce => {
-                    play_bounce(&*sounds, &storage, audio_output.as_ref().map(|o| o.deref()))
-                }
-                PongEvent::Score => {
-                    play_score(&*sounds, &storage, audio_output.as_ref().map(|o| o.deref()))
-                }
-            });
+        if let Some(sounds) = sounds {
+            pong_events
+                .read(reader)
+                .for_each(|ev| match ev {
+                    PongEvent::Bounce => {
+                        play_bounce(&*sounds, &storage, audio_output.as_ref().map(|o| o.deref()))
+                    }
+                    PongEvent::Score => {
+                        play_score(&*sounds, &storage, audio_output.as_ref().map(|o| o.deref()))
+                    }
+                });
+        }
     }
 
     fn setup(&mut self, world: &mut World) {
