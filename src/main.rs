@@ -2,6 +2,7 @@
 
 mod audio;
 mod bundle;
+mod event;
 mod pong;
 mod systems;
 
@@ -165,29 +166,29 @@ where
             InputBundle::<StringBindings>::new()
                 .with_bindings(bindings), /*.with_bindings_from_file(key_bindings_path)?*/
         )?
-        .with_bundle(PongBundle)?
-        // .with_bundle(AudioBundle::default())?
-        .with(
-            amethyst::assets::Processor::<amethyst::audio::Source>::new(),
-            "source_processor",
-            &[],
-        )
-        // .with_system_desc(
-        //     DjSystemDesc::new(|music: &mut Music| music.music.next()),
-        //     "dj_system",
-        //     &[],
-        // )
         .with_bundle(UiBundle::<StringBindings>::new())?
         .with_bundle(
             rendering_bundle
-                // The RenderToWindow plugin provides all the scaffolding for opening a window and
-                // drawing on it
-                .with_plugin(RenderToWindow::new().with_clear(ClearColor {
-                    float32: [0.34, 0.36, 0.52, 1.0],
-                }))
-                .with_plugin(RenderFlat2D::default())
-                .with_plugin(RenderUi::default()),
+            // The RenderToWindow plugin provides all the scaffolding for opening a window and
+            // drawing on it
+            .with_plugin(RenderToWindow::new().with_clear(ClearColor {
+                float32: [0.34, 0.36, 0.52, 1.0],
+            }))
+            .with_plugin(RenderFlat2D::default())
+            .with_plugin(RenderUi::default()),
         )?;
+
+    // Sound is currently not supported on wasm target
+    #[cfg(not(feature = "wasm"))]
+    let game_data = game_data
+        .with_system_desc(
+            DjSystemDesc::new(|music: &mut Music| music.music.next()),
+            "dj_system",
+            &[],
+        )
+        .with_bundle(AudioBundle::default())?;
+
+    let game_data = game_data.with_bundle(PongBundle)?;
 
     let game = Application::build(assets_dir, Pong::default())?
         .with_frame_limit(

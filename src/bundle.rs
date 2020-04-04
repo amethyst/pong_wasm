@@ -1,4 +1,4 @@
-use crate::systems::{BounceSystem, MoveBallsSystem, PaddleSystem, WinnerSystem};
+use crate::systems::{AudioSystem, BounceSystem, MoveBallsSystem, PaddleSystem, WinnerSystem};
 use amethyst::{
     core::bundle::SystemBundle,
     ecs::prelude::{DispatcherBuilder, World},
@@ -17,16 +17,23 @@ impl<'a, 'b> SystemBundle<'a, 'b> for PongBundle {
     ) -> Result<(), Error> {
         builder.add(PaddleSystem, "paddle_system", &["input_system"]);
         builder.add(MoveBallsSystem, "ball_system", &[]);
-        // builder.add(
-        //     BounceSystem,
-        //     "collision_system",
-        //     &["paddle_system", "ball_system"],
-        // );
-        // builder.add(
-        //     WinnerSystem,
-        //     "winner_system",
-        //     &["paddle_system", "ball_system"],
-        // );
+        builder.add(
+            BounceSystem,
+            "collision_system",
+            &["paddle_system", "ball_system"],
+        );
+        builder.add(
+            WinnerSystem,
+            "winner_system",
+            &["paddle_system", "ball_system"],
+        );
+
+        #[cfg(not(feature = "wasm"))]
+        builder.add(
+            AudioSystem::default(),
+            "pong_audio_system",
+            &["winner_system", "collision_system"],
+        );
         Ok(())
     }
 }

@@ -1,5 +1,6 @@
 use crate::{
     audio::{play_bounce, Sounds},
+    event::PongEvent,
     Ball, Paddle, Side,
 };
 use amethyst::{
@@ -7,7 +8,8 @@ use amethyst::{
     audio::{output::Output, Source},
     core::transform::Transform,
     derive::SystemDesc,
-    ecs::prelude::{Join, Read, ReadExpect, ReadStorage, System, SystemData, WriteStorage},
+    ecs::prelude::{Join, Read, ReadExpect, ReadStorage, System, SystemData, Write, WriteStorage},
+    shrev::EventChannel,
 };
 use std::ops::Deref;
 
@@ -21,15 +23,10 @@ impl<'s> System<'s> for BounceSystem {
         WriteStorage<'s, Ball>,
         ReadStorage<'s, Paddle>,
         ReadStorage<'s, Transform>,
-        Read<'s, AssetStorage<Source>>,
-        ReadExpect<'s, Sounds>,
-        Option<Read<'s, Output>>,
+        Write<'s, EventChannel<PongEvent>>,
     );
 
-    fn run(
-        &mut self,
-        (mut balls, paddles, transforms, storage, sounds, audio_output): Self::SystemData,
-    ) {
+    fn run(&mut self, (mut balls, paddles, transforms, mut pong_events): Self::SystemData) {
         // Check whether a ball collided, and bounce off accordingly.
         //
         // We also check for the velocity of the ball every time, to prevent multiple collisions
@@ -45,7 +42,7 @@ impl<'s> System<'s> for BounceSystem {
                 || (ball_y >= ARENA_HEIGHT - ball.radius && ball.velocity[1] > 0.0)
             {
                 ball.velocity[1] = -ball.velocity[1];
-                play_bounce(&*sounds, &storage, audio_output.as_ref().map(|o| o.deref()));
+                pong_events.single_write(PongEvent::Bounce);
             }
 
             // Bounce at the paddles.
@@ -69,7 +66,7 @@ impl<'s> System<'s> for BounceSystem {
                     || (paddle.side == Side::Right && ball.velocity[0] > 0.0))
                 {
                     ball.velocity[0] = -ball.velocity[0];
-                    play_bounce(&*sounds, &storage, audio_output.as_ref().map(|o| o.deref()));
+                    pong_events.single_write(PongEvent::Bounce);
                 }
             }
         }

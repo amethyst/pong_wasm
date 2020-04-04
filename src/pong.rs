@@ -28,7 +28,8 @@ impl SimpleState for Pong {
         self.sprite_sheet_handle.replace(load_sprite_sheet(world));
         initialise_paddles(world, self.sprite_sheet_handle.clone().unwrap());
         initialise_camera(world);
-        // initialise_audio(world);
+        #[cfg(not(feature = "wasm"))]
+        initialise_audio(world);
         initialise_score(world);
     }
 
