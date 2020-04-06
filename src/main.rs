@@ -179,7 +179,6 @@ where
         )?;
 
     // Sound is currently not supported on wasm target
-    #[cfg(not(feature = "wasm"))]
     let game_data = game_data
         .with_system_desc(
             DjSystemDesc::new(|music: &mut Music| music.music.next()),
