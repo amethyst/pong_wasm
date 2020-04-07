@@ -5,7 +5,7 @@ mod paddle;
 mod winner;
 
 pub use self::{
-    audio::AudioSystem,
+    audio::{AudioSystem, AudioSystemDesc},
     bounce::BounceSystem,
     move_balls::MoveBallsSystem,
     paddle::PaddleSystem,
