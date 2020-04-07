@@ -1,6 +1,6 @@
-use crate::systems::{AudioSystemDesc, BounceSystem, MoveBallsSystem, PaddleSystem, WinnerSystem};
+use crate::systems::{AudioSystem, BounceSystem, MoveBallsSystem, PaddleSystem, WinnerSystem};
 use amethyst::{
-    core::{bundle::SystemBundle, SystemDesc},
+    core::bundle::SystemBundle,
     ecs::prelude::{DispatcherBuilder, World},
     error::Error,
 };
@@ -12,7 +12,7 @@ pub struct PongBundle;
 impl<'a, 'b> SystemBundle<'a, 'b> for PongBundle {
     fn build(
         self,
-        world: &mut World,
+        _world: &mut World,
         builder: &mut DispatcherBuilder<'a, 'b>,
     ) -> Result<(), Error> {
         builder.add(PaddleSystem, "paddle_system", &["input_system"]);
@@ -27,7 +27,11 @@ impl<'a, 'b> SystemBundle<'a, 'b> for PongBundle {
             "winner_system",
             &["paddle_system", "ball_system"],
         );
-        builder.add_thread_local(AudioSystemDesc::default().build(world));
+        builder.add(
+            AudioSystem::default(),
+            "pong_audio_system",
+            &["winner_system", "collision_system"],
+        );
         Ok(())
     }
 }

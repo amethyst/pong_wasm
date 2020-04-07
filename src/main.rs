@@ -180,8 +180,12 @@ where
 
     // Sound is currently not supported on wasm target
     let game_data = game_data
-        .with_bundle(AudioBundle::default())?
-        .with_thread_local_desc(DjSystemDesc::new(|music: &mut Music| music.music.next()));
+        .with_system_desc(
+            DjSystemDesc::new(|music: &mut Music| music.music.next()),
+            "dj_system",
+            &[],
+        )
+        .with_bundle(AudioBundle::default())?;
 
     let game_data = game_data.with_bundle(PongBundle)?;
 

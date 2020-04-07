@@ -1,10 +1,9 @@
-use std::{iter::Cycle, vec::IntoIter};
-
 use amethyst::{
     assets::{AssetStorage, Loader},
     audio::{output::Output, AudioSink, OggFormat, Source, SourceHandle},
     ecs::{World, WorldExt},
 };
+use std::{iter::Cycle, vec::IntoIter};
 
 pub struct Sounds {
     pub score_sfx: SourceHandle,
@@ -54,15 +53,19 @@ pub fn initialise_audio(world: &mut World) {
 }
 
 /// Plays the bounce sound when a ball hits a side or a paddle.
-pub fn play_bounce(sounds: &Sounds, storage: &AssetStorage<Source>, output: &Output) {
-    if let Some(sound) = storage.get(&sounds.bounce_sfx) {
-        output.play_once(&sound, 1.0);
+pub fn play_bounce(sounds: &Sounds, storage: &AssetStorage<Source>, output: Option<&Output>) {
+    if let Some(ref output) = output.as_ref() {
+        if let Some(sound) = storage.get(&sounds.bounce_sfx) {
+            output.play_once(sound, 1.0);
+        }
     }
 }
 
 /// Plays the score sound when a player gains a point.
-pub fn play_score(sounds: &Sounds, storage: &AssetStorage<Source>, output: &Output) {
-    if let Some(sound) = storage.get(&sounds.score_sfx) {
-        output.play_once(&sound, 1.0);
+pub fn play_score(sounds: &Sounds, storage: &AssetStorage<Source>, output: Option<&Output>) {
+    if let Some(ref output) = output.as_ref() {
+        if let Some(sound) = storage.get(&sounds.score_sfx) {
+            output.play_once(sound, 1.0);
+        }
     }
 }
