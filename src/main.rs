@@ -152,12 +152,12 @@ where
         pos: Button::Key(VirtualKeyCode::W),
         neg: Button::Key(VirtualKeyCode::S),
     };
-    bindings.insert_axis("left_paddle", left_paddle_axis);
+    let _ = bindings.insert_axis("left_paddle", left_paddle_axis);
     let right_paddle_axis = Axis::Emulated {
         pos: Button::Key(VirtualKeyCode::Up),
         neg: Button::Key(VirtualKeyCode::Down),
     };
-    bindings.insert_axis("right_paddle", right_paddle_axis);
+    let _ = bindings.insert_axis("right_paddle", right_paddle_axis);
 
     let game_data = GameDataBuilder::default()
         // Add the transform bundle which handles tracking entity positions

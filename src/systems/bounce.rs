@@ -1,17 +1,10 @@
-use crate::{
-    audio::{play_bounce, Sounds},
-    event::PongEvent,
-    Ball, Paddle, Side,
-};
+use crate::{event::PongEvent, Ball, Paddle, Side};
 use amethyst::{
-    assets::AssetStorage,
-    audio::{output::Output, Source},
     core::transform::Transform,
     derive::SystemDesc,
-    ecs::prelude::{Join, Read, ReadExpect, ReadStorage, System, SystemData, Write, WriteStorage},
+    ecs::prelude::{Join, ReadStorage, System, SystemData, Write, WriteStorage},
     shrev::EventChannel,
 };
-use std::ops::Deref;
 
 /// This system is responsible for detecting collisions between balls and
 /// paddles, as well as balls and the top and bottom edges of the arena.
