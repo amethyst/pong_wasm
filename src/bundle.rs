@@ -27,8 +27,6 @@ impl<'a, 'b> SystemBundle<'a, 'b> for PongBundle {
             "winner_system",
             &["paddle_system", "ball_system"],
         );
-
-        #[cfg(not(feature = "wasm"))]
         builder.add(
             AudioSystem::default(),
             "pong_audio_system",

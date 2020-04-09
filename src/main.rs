@@ -152,12 +152,12 @@ where
         pos: Button::Key(VirtualKeyCode::W),
         neg: Button::Key(VirtualKeyCode::S),
     };
-    bindings.insert_axis("left_paddle", left_paddle_axis);
+    let _ = bindings.insert_axis("left_paddle", left_paddle_axis);
     let right_paddle_axis = Axis::Emulated {
         pos: Button::Key(VirtualKeyCode::Up),
         neg: Button::Key(VirtualKeyCode::Down),
     };
-    bindings.insert_axis("right_paddle", right_paddle_axis);
+    let _ = bindings.insert_axis("right_paddle", right_paddle_axis);
 
     let game_data = GameDataBuilder::default()
         // Add the transform bundle which handles tracking entity positions
@@ -179,14 +179,13 @@ where
         )?;
 
     // Sound is currently not supported on wasm target
-    #[cfg(not(feature = "wasm"))]
     let game_data = game_data
+        .with_bundle(AudioBundle::default())?
         .with_system_desc(
             DjSystemDesc::new(|music: &mut Music| music.music.next()),
             "dj_system",
             &[],
-        )
-        .with_bundle(AudioBundle::default())?;
+        );
 
     let game_data = game_data.with_bundle(PongBundle)?;
 

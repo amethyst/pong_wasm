@@ -1,10 +1,8 @@
-use crate::{audio::Sounds, event::PongEvent, Ball, ScoreBoard};
+use crate::{event::PongEvent, Ball, ScoreBoard};
 use amethyst::{
-    assets::AssetStorage,
-    audio::{output::Output, Source},
     core::Transform,
     derive::SystemDesc,
-    ecs::prelude::{Entity, Join, Read, ReadExpect, System, SystemData, Write, WriteStorage},
+    ecs::prelude::{Entity, Join, ReadExpect, System, SystemData, Write, WriteStorage},
     shrev::EventChannel,
     ui::UiText,
 };
