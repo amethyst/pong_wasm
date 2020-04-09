@@ -13,7 +13,7 @@ name = "pong"
 path = "src/main.rs"
 
 [dependencies]
-amethyst = { git = "https://github.com/amethyst/amethyst.git", branch = "feature/2195/wasm-audio", default-features = false, features = ["audio", "renderer", "vorbis", "wav"] }
+amethyst = { git = "https://github.com/amethyst/amethyst.git", branch = "wasm", default-features = false, features = ["audio", "renderer", "vorbis", "wav"] }
 log = "0.4.8"
 
 # Convenience snippets to override dependencies.

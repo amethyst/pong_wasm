@@ -60,7 +60,7 @@ dependencies = [
 [[package]]
 name = "amethyst"
 version = "0.15.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2195/wasm-audio#830487b34ee195b80a4779c196716d6ade1cd09d"
+source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#32b8a0767263e28e69d714ff7d5fdbd95872b313"
 dependencies = [
  "amethyst_assets",
  "amethyst_audio",
@@ -94,7 +94,7 @@ dependencies = [
 [[package]]
 name = "amethyst_assets"
 version = "0.11.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2195/wasm-audio#830487b34ee195b80a4779c196716d6ade1cd09d"
+source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#32b8a0767263e28e69d714ff7d5fdbd95872b313"
 dependencies = [
  "amethyst_core",
  "amethyst_derive",
@@ -121,7 +121,7 @@ dependencies = [
 [[package]]
 name = "amethyst_audio"
 version = "0.10.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2195/wasm-audio#830487b34ee195b80a4779c196716d6ade1cd09d"
+source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#32b8a0767263e28e69d714ff7d5fdbd95872b313"
 dependencies = [
  "amethyst_assets",
  "amethyst_core",
@@ -137,7 +137,7 @@ dependencies = [
 [[package]]
 name = "amethyst_config"
 version = "0.14.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2195/wasm-audio#830487b34ee195b80a4779c196716d6ade1cd09d"
+source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#32b8a0767263e28e69d714ff7d5fdbd95872b313"
 dependencies = [
  "log",
  "ron",
@@ -147,7 +147,7 @@ dependencies = [
 [[package]]
 name = "amethyst_controls"
 version = "0.9.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2195/wasm-audio#830487b34ee195b80a4779c196716d6ade1cd09d"
+source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#32b8a0767263e28e69d714ff7d5fdbd95872b313"
 dependencies = [
  "amethyst_assets",
  "amethyst_core",
@@ -164,7 +164,7 @@ dependencies = [
 [[package]]
 name = "amethyst_core"
 version = "0.10.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2195/wasm-audio#830487b34ee195b80a4779c196716d6ade1cd09d"
+source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#32b8a0767263e28e69d714ff7d5fdbd95872b313"
 dependencies = [
  "alga",
  "alga_derive",
@@ -187,7 +187,7 @@ dependencies = [
 [[package]]
 name = "amethyst_derive"
 version = "0.8.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2195/wasm-audio#830487b34ee195b80a4779c196716d6ade1cd09d"
+source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#32b8a0767263e28e69d714ff7d5fdbd95872b313"
 dependencies = [
  "heck",
  "proc-macro-crate",
@@ -200,7 +200,7 @@ dependencies = [
 [[package]]
 name = "amethyst_error"
 version = "0.5.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2195/wasm-audio#830487b34ee195b80a4779c196716d6ade1cd09d"
+source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#32b8a0767263e28e69d714ff7d5fdbd95872b313"
 dependencies = [
  "backtrace",
 ]
@@ -208,7 +208,7 @@ dependencies = [
 [[package]]
 name = "amethyst_input"
 version = "0.11.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2195/wasm-audio#830487b34ee195b80a4779c196716d6ade1cd09d"
+source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#32b8a0767263e28e69d714ff7d5fdbd95872b313"
 dependencies = [
  "amethyst_config",
  "amethyst_core",
@@ -225,7 +225,7 @@ dependencies = [
 [[package]]
 name = "amethyst_rendy"
 version = "0.5.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2195/wasm-audio#830487b34ee195b80a4779c196716d6ade1cd09d"
+source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#32b8a0767263e28e69d714ff7d5fdbd95872b313"
 dependencies = [
  "amethyst_assets",
  "amethyst_config",
@@ -254,7 +254,7 @@ dependencies = [
 [[package]]
 name = "amethyst_ui"
 version = "0.10.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2195/wasm-audio#830487b34ee195b80a4779c196716d6ade1cd09d"
+source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#32b8a0767263e28e69d714ff7d5fdbd95872b313"
 dependencies = [
  "amethyst_assets",
  "amethyst_audio",
@@ -286,7 +286,7 @@ dependencies = [
 [[package]]
 name = "amethyst_utils"
 version = "0.10.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2195/wasm-audio#830487b34ee195b80a4779c196716d6ade1cd09d"
+source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#32b8a0767263e28e69d714ff7d5fdbd95872b313"
 dependencies = [
  "amethyst_assets",
  "amethyst_controls",
@@ -305,7 +305,7 @@ dependencies = [
 [[package]]
 name = "amethyst_window"
 version = "0.5.0"
-source = "git+https://github.com/amethyst/amethyst.git?branch=feature/2195/wasm-audio#830487b34ee195b80a4779c196716d6ade1cd09d"
+source = "git+https://github.com/amethyst/amethyst.git?branch=wasm#32b8a0767263e28e69d714ff7d5fdbd95872b313"
 dependencies = [
  "amethyst_config",
  "amethyst_core",
@@ -1022,9 +1022,9 @@ dependencies = [
 
 [[package]]
 name = "err-derive"
-version = "0.2.3"
+version = "0.2.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "82f46c91bbed409ee74495549acbfcc7fae856e712e1df15afe75d0775eedc6c"
+checksum = "22deed3a8124cff5fa835713fa105621e43bbdc46690c3a6b68328a012d350d4"
 dependencies = [
  "proc-macro-error",
  "proc-macro2 1.0.10",
@@ -2226,9 +2226,9 @@ dependencies = [
 
 [[package]]
 name = "proc-macro-error"
-version = "0.4.12"
+version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "18f33027081eba0a6d8aba6d1b1c3a3be58cbb12106341c2d5759fcd9b5277e7"
+checksum = "98e9e4b82e0ef281812565ea4751049f1bdcdfccda7d3f459f2e138a40c08678"
 dependencies = [
  "proc-macro-error-attr",
  "proc-macro2 1.0.10",
@@ -2239,9 +2239,9 @@ dependencies = [
 
 [[package]]
 name = "proc-macro-error-attr"
-version = "0.4.12"
+version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8a5b4b77fdb63c1eca72173d68d24501c54ab1269409f6b672c85deb18af69de"
+checksum = "4f5444ead4e9935abd7f27dc51f7e852a0569ac888096d5ec2499470794e2e53"
 dependencies = [
  "proc-macro2 1.0.10",
  "quote 1.0.3",
