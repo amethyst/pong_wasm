@@ -26,3 +26,9 @@ RUSTFLAGS='-C target-feature=+atomics,+bulk-memory' \
 # Webpack doesn't have support for atomics yet.
 wasm-bindgen target/wasm32-unknown-unknown/release/pong_wasm.wasm \
   --out-dir pkg --no-modules
+
+# worker.js crashes because it does not have `AudioContext` / `webkitAudioContext` in scope.
+# This prevents it from crashing.
+audio_context_workaround="const lAudioContext = (typeof AudioContext !== 'undefined' ? AudioContext : typeof webkitAudioContext !== 'undefined' ? webkitAudioContext : null)"
+
+sed -i "s/const lAudioContext.\+\$/${audio_context_workaround}/" 'pkg/pong_wasm.js'
