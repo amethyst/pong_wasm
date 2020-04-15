@@ -46,6 +46,3 @@ gl = ["amethyst/gl"]
 vulkan = ["amethyst/vulkan"]
 metal = ["amethyst/metal"]
 empty = ["amethyst/empty"]
-
-[patch.crates-io]
-shred = { git = "https://github.com/amethyst/shred.git", branch = "wasm" }
