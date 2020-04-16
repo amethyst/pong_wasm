@@ -18,7 +18,7 @@ set -ex
 #   and put it in PATH
 
 RUSTFLAGS='-C target-feature=+atomics,+bulk-memory' \
-  cargo build -v --target wasm32-unknown-unknown -Z build-std=std,panic_abort \
+  cargo build --target wasm32-unknown-unknown -Z build-std=std,panic_abort \
   --features "wasm,gl" --release
 
 # Note the usage of `--no-modules` here which is used to create an output which

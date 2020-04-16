@@ -12,7 +12,7 @@ use amethyst::{
     audio::{AudioBundle, DjSystemDesc},
     core::{frame_limiter::FrameRateLimitStrategy, transform::TransformBundle},
     ecs::{Component, DenseVecStorage},
-    input::{Axis, Bindings, Button, InputBundle, StringBindings},
+    input::{Bindings, InputBundle, StringBindings},
     prelude::*,
     renderer::{
         plugins::{RenderFlat2D, RenderToWindow},
@@ -22,9 +22,10 @@ use amethyst::{
     },
     ui::{RenderUi, UiBundle},
     utils::application_root_dir,
-    window::{DisplayConfig, EventLoop},
-    winit::event::VirtualKeyCode,
+    window::EventLoop,
 };
+#[cfg(not(feature = "wasm"))]
+use amethyst::{config::Config, window::DisplayConfig};
 
 use crate::{audio::Music, bundle::PongBundle};
 
@@ -58,14 +59,23 @@ pub fn init_panic_hook() {
 fn main() -> amethyst::Result<()> {
     amethyst::start_logger(Default::default());
 
-    let rendering_bundle_fn = |app_root: &Path, event_loop: &EventLoop<()>| {
+    let setup_fn = |app_root: &Path, event_loop: &EventLoop<()>| {
+        let key_bindings_path = {
+            if cfg!(feature = "sdl_controller") {
+                app_root.join("config/input_controller.ron")
+            } else {
+                app_root.join("config/input.ron")
+            }
+        };
+        let bindings = <Bindings<StringBindings> as Config>::load(key_bindings_path)?;
+
         let display_config = DisplayConfig::load(app_root.join("config/display.ron"))?;
         let rendering_bundle = RenderingBundle::<DefaultBackend>::new(display_config, event_loop);
 
-        Ok(rendering_bundle)
+        Ok((bindings, rendering_bundle))
     };
 
-    run_application(rendering_bundle_fn)
+    run_application(setup_fn)
 }
 
 #[allow(unused)]
@@ -77,105 +87,136 @@ mod wasm {
     use std::path::Path;
 
     use amethyst::{
+        config::Config,
+        input::{Axis, Bindings, Button, StringBindings},
         renderer::{types::DefaultBackend, RenderingBundle},
         window::{DisplayConfig, EventLoop},
+        winit::event::VirtualKeyCode,
     };
     use wasm_bindgen::prelude::*;
     use web_sys::HtmlCanvasElement;
 
+    /// Pong application builder.
     #[wasm_bindgen]
-    pub fn run(canvas_element: Option<HtmlCanvasElement>) {
-        // Make panic return a stack trace
-        crate::init_panic_hook();
+    #[derive(Debug, Default)]
+    pub struct PongAppBuilder {
+        /// User supplied canvas, if any.
+        canvas_element: Option<HtmlCanvasElement>,
+        /// Input bindings data.
+        input_bindings_str: Option<String>,
+    }
 
-        wasm_logger::init(wasm_logger::Config::new(log::Level::Trace));
+    #[wasm_bindgen]
+    impl PongAppBuilder {
+        /// Returns a new `PongAppBuilder`.
+        pub fn new() -> Self {
+            Self::default()
+        }
 
-        log::debug!("run()");
-        log::debug!("canvas element: {:?}", canvas_element);
+        /// Sets the canvas element for the `PongAppBuilder`.
+        pub fn with_canvas(mut self, canvas: HtmlCanvasElement) -> Self {
+            self.canvas_element = Some(canvas);
+            self
+        }
 
-        let dimensions = canvas_element
-            .as_ref()
-            .map(|canvas_element| (canvas_element.width(), canvas_element.height()));
-        log::debug!("dimensions: {:?}", dimensions);
+        /// Sets the canvas element for the `PongAppBuilder`.
+        pub fn with_input_bindings(mut self, input_bindings_str: String) -> Self {
+            self.input_bindings_str = Some(input_bindings_str);
+            self
+        }
 
-        let mut display_config = DisplayConfig {
-            dimensions,
-            ..Default::default()
-        };
+        pub fn run(self) {
+            // Make panic return a stack trace
+            crate::init_panic_hook();
 
-        let rendering_bundle_fn = move |_: &Path, event_loop: &EventLoop<()>| {
-            let rendering_bundle =
-                RenderingBundle::<DefaultBackend>::new(display_config, event_loop, canvas_element);
+            wasm_logger::init(wasm_logger::Config::new(log::Level::Trace));
 
-            Ok(rendering_bundle)
-        };
+            log::debug!("canvas element: {:?}", self.canvas_element);
 
-        let res = super::run_application(rendering_bundle_fn);
-        match res {
-            Ok(_) => log::info!("Exited without error"),
-            Err(e) => log::error!("Main returned an error: {:?}", e),
+            let dimensions = self
+                .canvas_element
+                .as_ref()
+                .map(|canvas_element| (canvas_element.width(), canvas_element.height()));
+            log::debug!("dimensions: {:?}", dimensions);
+
+            let display_config = DisplayConfig {
+                dimensions,
+                ..Default::default()
+            };
+
+            let bindings = if let Some(input_bindings_str) = self.input_bindings_str.as_ref() {
+                <Bindings<StringBindings> as Config>::load_bytes(input_bindings_str.as_bytes())
+                    .expect("Failed to deserialize input bindings.")
+            } else {
+                // Hard coded bindings
+                log::debug!("Using built in bindings.");
+
+                let mut bindings = Bindings::<StringBindings>::new();
+                let left_paddle_axis = Axis::Emulated {
+                    pos: Button::Key(VirtualKeyCode::W),
+                    neg: Button::Key(VirtualKeyCode::S),
+                };
+                let _ = bindings.insert_axis("left_paddle", left_paddle_axis);
+                let right_paddle_axis = Axis::Emulated {
+                    pos: Button::Key(VirtualKeyCode::Up),
+                    neg: Button::Key(VirtualKeyCode::Down),
+                };
+                let _ = bindings.insert_axis("right_paddle", right_paddle_axis);
+
+                bindings
+            };
+
+            let setup_fn = move |_: &Path, event_loop: &EventLoop<()>| {
+                let rendering_bundle = RenderingBundle::<DefaultBackend>::new(
+                    display_config,
+                    event_loop,
+                    self.canvas_element,
+                );
+
+                Ok((bindings, rendering_bundle))
+            };
+
+            let res = super::run_application(setup_fn);
+            match res {
+                Ok(_) => log::info!("Exited without error"),
+                Err(e) => log::error!("Main returned an error: {:?}", e),
+            }
         }
     }
 }
 
-fn run_application<FnRenderingBundle>(
-    rendering_bundle_fn: FnRenderingBundle,
-) -> amethyst::Result<()>
+fn run_application<FnSetupBundle>(setup_fn: FnSetupBundle) -> amethyst::Result<()>
 where
-    FnRenderingBundle:
-        FnOnce(&Path, &EventLoop<()>) -> amethyst::Result<RenderingBundle<DefaultBackend>>,
+    FnSetupBundle:
+        FnOnce(
+            &Path,
+            &EventLoop<()>,
+        )
+            -> amethyst::Result<(Bindings<StringBindings>, RenderingBundle<DefaultBackend>)>,
 {
     use crate::pong::Pong;
 
-    log::debug!("before `application_root_dir()`");
     let app_root = application_root_dir()?;
-    log::debug!("{:?}", app_root);
-
-    let key_bindings_path = {
-        if cfg!(feature = "sdl_controller") {
-            app_root.join("config/input_controller.ron")
-        } else {
-            app_root.join("config/input.ron")
-        }
-    };
-    log::debug!("{:?}", key_bindings_path);
-
     let assets_dir = app_root.join("assets");
 
-    log::debug!("`EventLoop::new()`");
     let event_loop = EventLoop::new();
 
-    let rendering_bundle = rendering_bundle_fn(&app_root, &event_loop)?;
-
-    let mut bindings = Bindings::<StringBindings>::new();
-    let left_paddle_axis = Axis::Emulated {
-        pos: Button::Key(VirtualKeyCode::W),
-        neg: Button::Key(VirtualKeyCode::S),
-    };
-    let _ = bindings.insert_axis("left_paddle", left_paddle_axis);
-    let right_paddle_axis = Axis::Emulated {
-        pos: Button::Key(VirtualKeyCode::Up),
-        neg: Button::Key(VirtualKeyCode::Down),
-    };
-    let _ = bindings.insert_axis("right_paddle", right_paddle_axis);
+    let (bindings, rendering_bundle) = setup_fn(&app_root, &event_loop)?;
 
     let game_data = GameDataBuilder::default()
         // Add the transform bundle which handles tracking entity positions
         .with_bundle(TransformBundle::new())?
-        .with_bundle(
-            InputBundle::<StringBindings>::new()
-                .with_bindings(bindings), /*.with_bindings_from_file(key_bindings_path)?*/
-        )?
+        .with_bundle(InputBundle::<StringBindings>::new().with_bindings(bindings))?
         .with_bundle(UiBundle::<StringBindings>::new())?
         .with_bundle(
             rendering_bundle
-            // The RenderToWindow plugin provides all the scaffolding for opening a window and
-            // drawing on it
-            .with_plugin(RenderToWindow::new().with_clear(ClearColor {
-                float32: [0.34, 0.36, 0.52, 1.0],
-            }))
-            .with_plugin(RenderFlat2D::default())
-            .with_plugin(RenderUi::default()),
+                // The RenderToWindow plugin provides all the scaffolding for opening a window and
+                // drawing on it
+                .with_plugin(RenderToWindow::new().with_clear(ClearColor {
+                    float32: [0.34, 0.36, 0.52, 1.0],
+                }))
+                .with_plugin(RenderFlat2D::default())
+                .with_plugin(RenderUi::default()),
         )?;
 
     // Sound is currently not supported on wasm target

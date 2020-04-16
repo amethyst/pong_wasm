@@ -31,10 +31,16 @@
           await wasm_bindgen('./pkg/pong_wasm_bg.wasm');
 
           let canvas = document.getElementById("amethyst-canvas");
-          console.log(canvas);
 
-          wasm_bindgen.run(canvas);
-          // wasm_bindgen.run();
+          let input_bindings = await fetch('config/input.ron')
+            .then((response) => { return response.text(); });
+          console.log(input_bindings);
+
+          wasm_bindgen.PongAppBuilder
+            .new()
+            .with_canvas(canvas)
+            .with_input_bindings(input_bindings)
+            .run();
         });
       }
 
