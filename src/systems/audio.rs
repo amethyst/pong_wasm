@@ -1,10 +1,14 @@
-use crate::audio::{play_bounce, play_score, Sounds};
-use crate::event::PongEvent;
+use crate::{
+    audio::{play_bounce, play_score, Sounds},
+    event::PongEvent,
+};
 
-use amethyst::assets::AssetStorage;
-use amethyst::audio::{output::Output, Source};
-use amethyst::ecs::{Join, Read, ReadExpect, System, SystemData, World};
-use amethyst::shrev::{EventChannel, ReaderId};
+use amethyst::{
+    assets::AssetStorage,
+    audio::{output::Output, Source},
+    ecs::{Read, System, SystemData, World},
+    shrev::{EventChannel, ReaderId},
+};
 
 use std::ops::Deref;
 
