@@ -25,7 +25,7 @@ RUSTFLAGS='-C target-feature=+atomics,+bulk-memory' \
 # is usable from Web Workers. We notably can't use `--target bundler` since
 # Webpack doesn't have support for atomics yet.
 wasm-bindgen target/wasm32-unknown-unknown/release/pong_wasm.wasm \
-  --out-dir pkg --no-modules
+  --out-dir pkg --target no-modules
 
 # worker.js crashes because it does not have `AudioContext` / `webkitAudioContext` in scope.
 # This prevents it from crashing.
