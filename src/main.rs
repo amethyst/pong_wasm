@@ -92,6 +92,7 @@ mod wasm {
         renderer::{types::DefaultBackend, RenderingBundle},
         window::{DisplayConfig, EventLoop},
         winit::event::VirtualKeyCode,
+        LoggerConfig,
     };
     use wasm_bindgen::prelude::*;
     use web_sys::HtmlCanvasElement;
@@ -129,7 +130,10 @@ mod wasm {
             // Make panic return a stack trace
             crate::init_panic_hook();
 
-            wasm_logger::init(wasm_logger::Config::new(log::Level::Trace));
+            amethyst::start_logger(LoggerConfig {
+                allow_env_override: false,
+                ..Default::default()
+            });
 
             log::debug!("canvas element: {:?}", self.canvas_element);
 
