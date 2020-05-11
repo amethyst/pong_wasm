@@ -13,7 +13,7 @@ name = "pong"
 path = "src/main.rs"
 
 [dependencies]
-amethyst = { git = "https://github.com/amethyst/amethyst.git", branch = "wasm", default-features = false, features = ["audio", "renderer", "vorbis", "wav"] }
+amethyst = { git = "https://github.com/amethyst/amethyst.git", branch = "improvement/2228/chip-away-at-crashes", default-features = false, features = ["audio", "renderer", "vorbis", "wav"] }
 log = "0.4.8"
 
 # Convenience snippets to override dependencies.
@@ -35,7 +35,7 @@ log = "0.4.8"
 
 [target.'cfg(target_arch = "wasm32")'.dependencies]
 console_error_panic_hook = { version = "0.1.6" }
-wasm-bindgen = { version = "0.2.60" }
+wasm-bindgen = { version = "0.2.62" }
 web-sys = { version = "0.3.36" }
 
 [features]

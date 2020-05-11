@@ -1,5 +1,5 @@
 // synchronously, using the browser, import out shim JS scripts
-importScripts('pkg/pong_wasm.js');
+importScripts('pkg/pong_wasm.js', 'js/amethyst_assets.js');
 
 // Wait for the main thread to send us the shared module/memory. Once we've got
 // it, initialize it all with the `wasm_bindgen` global we imported via
